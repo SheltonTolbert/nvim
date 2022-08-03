@@ -1,5 +1,5 @@
 "System dependencies
-"brew install lua, ripgrep "
+"brew install lua, ripgrep"
 
 set exrc
 set relativenumber
@@ -25,7 +25,7 @@ set nospell
 call plug#begin('~/.vim.plugged')
 "Telescope" 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 "Themes"
 Plug 'markvincze/panda-vim'
 Plug 'mhartington/oceanic-next'
@@ -58,14 +58,15 @@ syntax on
 filetype plugin indent on
 colorscheme OceanicNext
 
-"Modes"
+"Key Bindings"
 let mapleader = " "
 
 nnoremap <leader>p :Files<CR>
 nnoremap <leader>v :vsp<CR>
 nnoremap <leader>h :sp<CR>
 nnoremap <leader>b :Buffers<CR>
-
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fw <cmd>lua require('telescope.builtin').grep_string()<cr>
 
 
 "LSP config"
