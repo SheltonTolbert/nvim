@@ -1,5 +1,11 @@
 "System dependencies
 "brew install lua, ripgrep"
+"
+"powerline font:
+"
+"brew tap homebrew/cask-fonts &&
+"brew install --cask font-<FONT NAME>-nerd-font
+
 
 set exrc
 set relativenumber
