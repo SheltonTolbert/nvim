@@ -88,6 +88,7 @@ call plug#end()
 syntax on 
 filetype plugin indent on
 colorscheme OceanicNext
+
 "Transparent background"
 hi Normal guibg=none ctermbg=none
 hi LineNr guibg=none ctermbg=none
@@ -97,7 +98,6 @@ hi SpecialKey guibg=none ctermbg=none
 hi VertSplit guibg=none ctermbg=none
 hi SignColumn guibg=none ctermbg=none
 hi EndOfBuffer guibg=none ctermbg=none
-
 
 let g:neoformat_try_node_exe = 1
 
@@ -113,6 +113,7 @@ nnoremap <leader>h :sp<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fw <cmd>lua require('telescope.builtin').grep_string()<cr>
+nnoremap <leader>ft :NvimTreeToggle<CR>
 
 
 "===================================================================================="
@@ -142,9 +143,12 @@ require("nvim-tree").setup({
   },
   renderer = {
     group_empty = true,
+    indent_markers = {
+        enable = true,
+    },
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
 })
 
@@ -153,8 +157,7 @@ EOF
 "===================================================================================="
 "Auto Commands"
 "===================================================================================="
-"
-autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Neoformat
 
+autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Neoformat
 autocmd BufWritePost *.ex,*.exs :MixFormat
 
