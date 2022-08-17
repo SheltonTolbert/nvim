@@ -3,17 +3,20 @@
 "===================================================================================="
 
 "brew install lua, ripgrep"
-"
-"i'm relying on a global installation of prettier here. might want to
+
+"I'm relying on a global installation of prettier here. might want to
 "reconsider this. maybe we can look for local prettier.rc and default to
 "global if needed.
-"
+
 "npm install -g prettier
 
 "powerline font:
 
 "brew tap homebrew/cask-fonts &&
 "brew install --cask font-<FONT NAME>-nerd-font
+"
+"The Elixir Lsp requires specifying an absolute path. This should 
+"be set in the require'lspconfig'.elixirls.setup() call in ./lau/ss_swizzle.lau
 
 "===================================================================================="
 "Settings
@@ -60,9 +63,10 @@ Plug 'jiaoshijie/undotree'
 Plug 'tpope/vim-fugitive'
 "LSP"
 Plug 'neovim/nvim-lspconfig'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-Plug 'jose-elias-alvarez/typescript.nvim'
+"js/ts"
+    Plug 'jose-elias-alvarez/null-ls.nvim'
+    Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+    Plug 'jose-elias-alvarez/typescript.nvim'
 "File Tree"
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'kyazdani42/nvim-tree.lua'
@@ -79,6 +83,10 @@ Plug 'kamykn/spelunker.vim'
 Plug 'sbdchd/neoformat'
 "Elixir Formatter"
 Plug 'mhinz/vim-mix-format'
+"Completion Engine"
+Plug 'hrsh7th/nvim-cmp'
+"Snippet Engine"
+Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 "===================================================================================="

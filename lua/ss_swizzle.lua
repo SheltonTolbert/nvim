@@ -8,3 +8,10 @@ require("typescript").setup({
         end,
     },
 })
+
+require'lspconfig'.elixirls.setup{
+    cmd = { "/Users/sheltontolbert/.config/nvim/lsp/elixir-ls/language_server.sh"},
+    on_attach = function() 
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = 0})
+    end,
+}
