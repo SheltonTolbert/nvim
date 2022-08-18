@@ -27,8 +27,8 @@ set relativenumber
 set nu
 set nohlsearch
 set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 set nowrap
@@ -83,10 +83,14 @@ Plug 'kamykn/spelunker.vim'
 Plug 'sbdchd/neoformat'
 "Elixir Formatter"
 Plug 'mhinz/vim-mix-format'
-"Completion Engine"
-Plug 'hrsh7th/nvim-cmp'
-"Snippet Engine"
+"Completion Engine & Snippet Engine"
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
 "===================================================================================="
@@ -96,6 +100,8 @@ call plug#end()
 syntax on 
 filetype plugin indent on
 colorscheme OceanicNext
+
+set completeopt=menu,menuone,noselect
 
 "Transparent background"
 hi Normal guibg=none ctermbg=none
@@ -131,7 +137,13 @@ nnoremap <leader>ft :NvimTreeToggle<CR>
 lua << EOF
 
 local lspconfig = require("lspconfig")
+
 require("ss_swizzle")
+require('nvim-treesitter.configs').setup {
+    highlight = {
+        enable = true 
+        }
+    }
 
 EOF
 
