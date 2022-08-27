@@ -13,7 +13,7 @@ cmp.setup({
   },
   window = {
     completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -61,6 +61,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("typescript").setup({
@@ -81,3 +82,5 @@ require'lspconfig'.elixirls.setup{
     end,
   capabilities = capabilities
 }
+
+require'lspconfig'.eslint.setup{}

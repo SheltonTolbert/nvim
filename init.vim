@@ -13,11 +13,15 @@
 "powerline font:
 
 "brew tap homebrew/cask-fonts &&
-"brew install --cask font-<FONT NAME>-nerd-font
+"brew install --cask font-hack-nerd-font
 "
 "The Elixir Lsp requires specifying an absolute path. This should 
 "be set in the require'lspconfig'.elixirls.setup() call in ./lau/ss_swizzle.lau
-
+"
+"# Lsp dependencies
+"
+"npm i -g vscode-langservers-extracted
+"
 "===================================================================================="
 "Settings
 "===================================================================================="
@@ -42,12 +46,19 @@ set noshowmode
 set signcolumn=yes
 set hidden
 set nospell
+set cursorline
+
+lua << EOF
+vim.diagnostic.config({virtual_text = false})
+EOF
 
 "===================================================================================="
 "Plugins
 "===================================================================================="
 
 call plug#begin('~/.vim.plugged')
+"Git blame"
+Plug 'APZelos/blamer.nvim'
 "Telescope" 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -128,6 +139,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fw <cmd>lua require('telescope.builtin').grep_string()<cr>
 nnoremap <leader>ft :NvimTreeToggle<CR>
+nnoremap <leader>k :lua vim.diagnostic.open_float()<CR>
 
 
 "===================================================================================="
