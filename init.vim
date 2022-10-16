@@ -47,13 +47,14 @@ set signcolumn=yes
 set hidden
 set nospell
 set cursorline
+set path=.,,/Users/sheltontolbert/repos/dscout/apps/dendra/src/**
 
 lua << EOF
-vim.diagnostic.config({virtual_text = false})
+vim.diagnostic.config({virtual_text = true, source = false})
 EOF
 
 "===================================================================================="
-"Plugins
+"Plugins"
 "===================================================================================="
 
 call plug#begin('~/.vim.plugged')
@@ -79,7 +80,7 @@ Plug 'neovim/nvim-lspconfig'
     Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
     Plug 'jose-elias-alvarez/typescript.nvim'
 "File Tree"
-Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-web-devicons' "optional, for file icons"
 Plug 'kyazdani42/nvim-tree.lua'
 "Fonts"
 Plug 'powerline/powerline-fonts'
@@ -102,6 +103,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+"AutoCloseTags for react and html"
+Plug 'alvan/vim-closetag'
 call plug#end()
 
 "===================================================================================="
@@ -139,8 +142,9 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fw <cmd>lua require('telescope.builtin').grep_string()<cr>
 nnoremap <leader>ft :NvimTreeToggle<CR>
+nnoremap <leader>fc :Neoformat<CR>
 nnoremap <leader>k :lua vim.diagnostic.open_float()<CR>
-
+nnoremap <leader>sss :source $MYVIMRC<CR>
 
 "===================================================================================="
 "LSP config"
@@ -151,11 +155,11 @@ lua << EOF
 local lspconfig = require("lspconfig")
 
 require("ss_swizzle")
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true 
         }
-    }
+    })
 
 EOF
 
@@ -190,6 +194,6 @@ EOF
 "Auto Commands"
 "===================================================================================="
 
-autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Neoformat
+"autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Neoformat"
 autocmd BufWritePost *.ex,*.exs :MixFormat
 
